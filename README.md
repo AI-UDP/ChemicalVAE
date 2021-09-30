@@ -1,4 +1,4 @@
-# Glosario y descripcion de codigos
+# Code files description
 
 CHEMICALTEST.PY ... 	converts chemical sequence file to an index representation
 			("drugsOut.txt")
@@ -18,7 +18,7 @@ FFN.PY ... 	This file takes two pairs of files: a training one and a test one. T
 		outputs the value that directs whether the drug tends to kill bacteria or
 		to slow down their growth.
 
-# Reproduccion de codigo
+# Usage
 The command sequence to run these code files is:
 
 chemicalTest.py -i "drugsOut.txt" -o "listOutarg.txt" -wo "wodindexarg.txt"
@@ -26,6 +26,6 @@ VAE.py -i "listOutarg.txt" -iv "listOutarg.txt" -o "vaeout.txt" -ov "vaevalout.t
 labeling.py -i "drugsOut.txt" -ofr "labelingoutarg.txt" -ol "labelinglabelout.txt" -w "wodindexarg.txt"
 ffn.py -i "labelingoutarg.txt" -il "labelinglabelout.txt" -it "labelingoutarg.txt" -itl "labelinglabelout.txt" -o "fnnoutarg.txt" -id "vaeout.txt"
 
-# Dependencias
+# Dependencies
 
 Dependencies can be found in the requirements.txt file
