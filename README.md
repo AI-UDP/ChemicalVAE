@@ -1,29 +1,25 @@
 # Glosario y descripcion de codigos
 
-CHEMICALTEST.PY ... convierte archivo de cadenas quimicas a una representacion de indices
+CHEMICALTEST.PY ... 	converts chemical sequence file to an index representation
 			("drugsOut.txt")
 
-VAE.PY ... 	toma la representacion de indices a entrenar, otra de validacion y la 
-		procesa en la vae, obtiene predicciones para los valores de prueba y 
-		los de validacion ('listfileoriginal.txt','listfilevalidate.txt','wordindex.txt')
+VAE.PY ... 	uses the index representation for training, a validation file and processes them in a VAE. 
+		Generates predictions for test and validation values.
+		('listfileoriginal.txt','listfilevalidate.txt','wordindex.txt')
 
-LABELING.PY... Este archivo toma como entrada el archivo original y el indice de palabras
-		(Mismo que archivo que entra y sale en el primer script). 
-		y como salida generara un archivo con la representacion decodificada con la etiqueta
-		de cada quimico, un archivo con la representacion en indices y otro con las etiquetas 
-		de cada farmaco listas para el archivo FFN.PY, asi con el primer archivo se consulta
-		 
+LABELING.PY... 	This file takes the original input file and the word index both as input and
+		generates a file with the decoded representation and label of each chemical compound,
+		a file with the index representation and another one with the labels of each drug
+		readily accessible for processing by the FFN.PY file.
 
-FFN.PY ... 	Esto Toma 2 pares de archivos, uno de entrenamiento y otro de prueba
-		de los 2 pares de archivo uno debe ser la representacion de indices
-		y el otro los labels de las representaciones (Deben estar mismas posiciones,
-		Esto quiere decir que en la primera posicion del arreglo de la representacion
-		de indices el label correspondiente a esa representacion debe igual estar
-		en esa posicion).  Esto da como salida un archivo con la  matabilidad o no
-		reproducibilidad del quimico
+FFN.PY ... 	This file takes two pairs of files: a training one and a test one. This
+		file requires two pairs of input files - one with the index representation
+		and the other one with the labels (at corresponding positions). This file
+		outputs the value that directs whether the drug tends to kill bacteria or
+		to slow down their growth.
 
 # Reproduccion de codigo
-Comandos para replicar en orden
+The command sequence to run these code files is:
 
 chemicalTest.py -i "drugsOut.txt" -o "listOutarg.txt" -wo "wodindexarg.txt"
 VAE.py -i "listOutarg.txt" -iv "listOutarg.txt" -o "vaeout.txt" -ov "vaevalout.txt" -l "8" -w "wodindexarg.txt"
@@ -32,4 +28,4 @@ ffn.py -i "labelingoutarg.txt" -il "labelinglabelout.txt" -it "labelingoutarg.tx
 
 # Dependencias
 
-Las dependencias se encuentran en el archivo requirements.txt
+Dependencies can be found in the requirements.txt file
